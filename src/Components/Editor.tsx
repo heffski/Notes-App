@@ -12,7 +12,6 @@ const converter = new Showdown.Converter({
   });
 
 export default function Editor({currentNote, updateNote}) {
-    const [value, setValue] = React.useState("**Hello world!!!**");
     const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
 
     interface EditorProps {
@@ -31,8 +30,8 @@ export default function Editor({currentNote, updateNote}) {
     return (
         <Flex>
             <ReactMde
-                value={value}
-                onChange={setValue}
+                value={currentNote.body}
+                onChange={updateNote}
                 selectedTab={selectedTab}
                 onTabChange={setSelectedTab}
                 generateMarkdownPreview={markdown =>
